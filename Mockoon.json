@@ -1,0 +1,1 @@
+{"openapi":"3.0.0","info":{"title":"PockCart","version":"1.0.0"},"servers":[{"url":"http://localhost:3001/"}],"paths":{"/products":{"get":{"description":"products","responses":{"200":{"description":"","content":{"application/json":{}},"headers":{}}}}}}}

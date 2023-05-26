@@ -48,10 +48,10 @@ final class ProductViewModel: LoadableViewModel, ObservableObject {
             case .failure(let error):
 
                 self?.state = .error(error)
-                self?.state = .idle
+
             case .finished:
                 self?.state = .finishedLoading
-                self?.state = .idle
+           
             }
         }
 
