@@ -27,7 +27,7 @@ class ProductCoordinator: Coordinatable {
 
     func start() {
         let testVC = factory.makeProductsViewController()
-        testVC.view.backgroundColor = .green
+        testVC.view.backgroundColor = .white
         self.navigationController.pushViewController(testVC, animated: true)
     }
 
