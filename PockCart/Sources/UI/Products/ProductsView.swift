@@ -13,7 +13,6 @@ struct ProductsView: View {
     
     @StateObject var viewModel: ProductViewModel
     
-    
     var body: some View {
         ScrollView {
             // ForEach
@@ -25,6 +24,7 @@ struct ProductsView: View {
             ProductCardBlocView()
         }
         .padding([.trailing, .leading], 20)
+        
         .onAppear(perform: viewModel.fetchProducts)
     }
 }
@@ -40,18 +40,14 @@ struct ProductCardBlocView: View {
         .cornerRadius(5) /// make the background rounded
         .overlay( /// apply a rounded border
             RoundedRectangle(cornerRadius: 5)
-                .stroke(.gray, lineWidth: 1))
+                .stroke(Color(.lightGray), lineWidth: 1))
     }
 }
 
 struct ProductCardHeaderView: View {
     var body: some View {
         Text("Promotion")
-            .padding(.all, 5)
-            .frame(maxWidth: .infinity)
-            .multilineTextAlignment(.center)
-            .foregroundColor(.white)
-            .background(.red)
+            .productCardHeader()
     }
 }
 
@@ -59,20 +55,14 @@ struct ProductCardInfosView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 5, content:  {
             Image("kitkat")
-            VStack(alignment: .leading, spacing: 5, content: {
+            VStack(alignment: .leading, spacing: 10, content: {
                 HStack {
                     Text("4 unités")
-                        .font(Font(CTFont(.label, size: 11)))
-                        .padding(.all, 3)
-                        .background(Color("grey100"))
-                        .cornerRadius(4)
+                        .productCardTag()
                     Text("700g")
-                        .font(Font(CTFont(.label, size: 11)))
-                        .padding(.all, 3)
-                        .background(Color("grey100"))
-                        .cornerRadius(4)
+                        .productCardTag()
                 }
-                Text("MARQUE 75 caractères quise nostrud exercitation ullamco, République dominicaine 700g...")
+                Text("MARQUE 75 caractères quise nostrud exercitation ullamco, République dominicaine 700g")
                     .bold()
                     .font(Font(CTFont(.label, size: 12)))
             })
@@ -117,32 +107,17 @@ struct ProductCardActionsView: View {
 struct ProductCardPromotionView: View {
     var body: some View {
         Text("20 % en € CarteU")
-            .padding(.all, 5)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(.red)
-            .multilineTextAlignment(.center)
-            .bold()
-            .font(Font(CTFont(.label, size: 13)))
-            .cornerRadius(5) /// make the background rounded
-            .overlay( /// apply a rounded border
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(.red, lineWidth: 1))
+            .productCardPromotion()
             .padding([.trailing, .leading, .bottom], 15)
     }
 }
 
-
-
-
 struct ProductsView_Previews: PreviewProvider {
-    
     
     struct FakeUseCase: FetchProductsUseCase {
         func execute() -> AnyPublisher<[PockCartData.Product], PockCartData.APIError> {
             Empty(completeImmediately: false).eraseToAnyPublisher()
         }
-        
-        
     }
     
     static var previews: some View {
