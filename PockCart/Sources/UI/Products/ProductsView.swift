@@ -15,13 +15,12 @@ struct ProductsView: View {
     
     var body: some View {
         ScrollView {
-            // ForEach
-            ProductCardBlocView()
-                .environmentObject(viewModel)
-            ProductCardBlocView()
-            ProductCardBlocView()
-            ProductCardBlocView()
-            ProductCardBlocView()
+            LazyVStack {
+                ForEach((1...10000), id: \.self) {_ in
+                    ProductCardBlocView()
+                        .environmentObject(viewModel)
+                }
+            }
         }
         .padding([.trailing, .leading], 20)
         
@@ -30,8 +29,9 @@ struct ProductsView: View {
 }
 
 struct ProductCardBlocView: View {
+    
     var body: some View {
-        LazyVStack (alignment: .leading, content: {
+        VStack (alignment: .leading, content: {
             ProductCardHeaderView()
             ProductCardInfosView()
             ProductCardPromotionView()
@@ -45,6 +45,7 @@ struct ProductCardBlocView: View {
 }
 
 struct ProductCardHeaderView: View {
+    
     var body: some View {
         Text("Promotion")
             .productCardHeader()
@@ -52,6 +53,7 @@ struct ProductCardHeaderView: View {
 }
 
 struct ProductCardInfosView: View {
+    
     var body: some View {
         HStack(alignment: .center, spacing: 5, content:  {
             Image("kitkat")
@@ -71,6 +73,7 @@ struct ProductCardInfosView: View {
 }
 
 struct ProductCardPriceView: View {
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, content: {
@@ -89,6 +92,7 @@ struct ProductCardPriceView: View {
 }
 
 struct ProductCardActionsView: View {
+    
     var body: some View {
         HStack {
             Button {
@@ -105,6 +109,7 @@ struct ProductCardActionsView: View {
 }
 
 struct ProductCardPromotionView: View {
+    
     var body: some View {
         Text("20 % en € CarteU")
             .productCardPromotion()
