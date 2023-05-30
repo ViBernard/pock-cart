@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct Product {
-    let identifier: String
-    let name: String
+public struct Product: Identifiable, Hashable {
+    public let id: String
+    public let name: String
 }
 
 extension Product: Mapper {
@@ -17,7 +17,7 @@ extension Product: Mapper {
     typealias U = Self
 
     static func convert(from entity: ProductDTO) -> Product {
-        Product(identifier: String(entity.nid), name: entity.name)
+        Product(id: String(entity.nid), name: entity.name)
     }
 
 }
