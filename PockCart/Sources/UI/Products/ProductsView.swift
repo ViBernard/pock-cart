@@ -16,26 +16,35 @@ struct ProductsView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach((1...10000), id: \.self) {_ in
-                    ProductCardBlocView()
+                ForEach((viewModel.products), id: \.self) { item in
+                    ProductCardBlocView(product: item)
                         .environmentObject(viewModel)
                 }
             }
         }
         .padding([.trailing, .leading], 20)
-        
         .onAppear(perform: viewModel.fetchProducts)
     }
 }
 
 struct ProductCardBlocView: View {
+
+    var product:Product
     
     var body: some View {
         VStack (alignment: .leading, content: {
-            ProductCardHeaderView()
-            ProductCardInfosView()
-            ProductCardPromotionView()
-            ProductCardPriceView()
+            ProductCardHeaderView(name: product.name)
+            ProductCardInfosView(
+                description: product.description,
+                labels: product.labels
+            )
+            if(product.hasPromo) {
+                ProductCardPromotionView()
+            }
+            ProductCardPriceView(
+                priceLabel: product.price,
+                pricePromo: product.pricePromo
+            )
         })
         .cornerRadius(5) /// make the background rounded
         .overlay( /// apply a rounded border
@@ -45,26 +54,34 @@ struct ProductCardBlocView: View {
 }
 
 struct ProductCardHeaderView: View {
-    
+
+    var name: String
+
     var body: some View {
-        Text("Promotion")
+        Text(name)
             .productCardHeader()
     }
 }
 
 struct ProductCardInfosView: View {
+
+    var description:String
+    var labels: [String]
     
     var body: some View {
         HStack(alignment: .center, spacing: 5, content:  {
             Image("kitkat")
+                .padding(.vertical,5)
             VStack(alignment: .leading, spacing: 10, content: {
                 HStack {
-                    Text("4 unités")
-                        .productCardTag()
-                    Text("700g")
-                        .productCardTag()
+                    ForEach(labels, id: \.self) { label in
+                        Text(label)
+                            .productCardTag()
+                    }
                 }
-                Text("MARQUE 75 caractères quise nostrud exercitation ullamco, République dominicaine 700g")
+                Text(self.description)
+                    .lineLimit(3)
+                    .padding(Edge.Set.trailing,20)
                     .bold()
                     .font(Font(CTFont(.label, size: 12)))
             })
@@ -73,16 +90,21 @@ struct ProductCardInfosView: View {
 }
 
 struct ProductCardPriceView: View {
+
+    var priceLabel: String
+    var pricePromo: String?
     
     var body: some View {
         HStack {
             VStack(alignment: .leading, content: {
-                Text("999,99 €")
+                Text(pricePromo ?? priceLabel)
                     .bold()
                     .font(Font(CTFont(.label, size: 12)))
-                Text("999,99 €")
-                    .font(Font(CTFont(.label, size: 11)))
-                    .foregroundColor(Color("grey900"))
+                if(pricePromo != nil) {
+                    Text(priceLabel)
+                        .font(Font(CTFont(.label, size: 11)))
+                        .foregroundColor(Color("grey900"))
+                }
             })
             Spacer()
             ProductCardActionsView()
@@ -133,4 +155,3 @@ struct ProductsView_Previews: PreviewProvider {
         )
     }
 }
-

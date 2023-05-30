@@ -19,7 +19,7 @@ final class ApplicationDIContainer {
     }
 
     func makeTabBarCordinator() -> TabBarCoordinator {
-        let tabbarController = TabBarController()
+        let tabbarController = makeTabBarController()
         return TabBarCoordinator(tabBarController: tabbarController, factory: self)
     }
 

@@ -12,6 +12,7 @@ public struct ProductsRepository {
 
     // MARK: - Properties
 
+    // TODO : Passer par une interface
     private let remoteDataSource: ProductRemoteDataSource
 
     // MARK: - Lifecycle
@@ -22,14 +23,13 @@ public struct ProductsRepository {
     
     // MARK: - Methods
 
-
     func getProducts<T: Mapper>() -> AnyPublisher<[T], APIError>
     where T.T == ProductDTO, T.U == T
     {
         remoteDataSource
             .fetchProducts()
             .map { response -> [T] in
-                response.products.map {T.convert(from: $0)}
+                T.convert(from: response.products)
             }
             .eraseToAnyPublisher()
     }
