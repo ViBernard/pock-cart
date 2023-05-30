@@ -1,0 +1,39 @@
+{
+	"products": [{
+		"node_id": 43,
+		"name": "Donuts",
+		"price": 450,
+		"has_promo": true,
+		"description": "Les donuts sont une des recettes les plus appréciées par les gourmands à mardi gras. Ces beignets originaires des États-Unis régalent, les pupilles et les papilles des enfants et des plus grands. La préparation de la pâte à donuts est vraiment très facile. La preuve avec notre délicieuse recette, parfaite pour fêter le carnaval ! À découvrir et à essayer pour faire plaisir à toute la famille.",
+		"tags":["700 g", "4 unités"]
+	},{
+		"node_id": 46,
+		"name": "Mars",
+		"price": 220,
+		"has_promo": true,
+		"description": "Ingrédients: sucre, sirop de glucose, LAIT entier en poudre, beurre de cacao, pâte de cacao, huile de tournesol, LAIT écrémé en poudre, LACTOSE, perméat de lactosérum (LAIT), cacao maigre, extrait de malt d' ORGE, matière grasse du LAIT, sel, émulsifiant (lécithine de SOJA), blanc d' OEUF en poudre, matière grasse de palme, amidon. (Peut contenir: NOISETTE, CACAHUÈTE).",
+		"tags":["600 g", "5 unités"]
+	},{
+		"node_id": 48,
+		"price": 130,
+		"name": "Lion",
+		"description": "Découvrez les céréales LION, un mélange unique de caramel et de chocolat au goût irrésistible pour vous faire rugir de plaisir dès le matin. Fabriquées en France, les céréales LION contiennent du blé complet, des vitamines, des fibres et des minéraux et sont sans colorant et sans arôme artificiel !"
+	},{
+		"node_id": 49,
+		"price": 250,
+		"name": "Carottes",
+		"tags": ["Catégorie 1","Calibre : 28/35"],
+		"description": "Nos carottes bio.",
+	},{
+		"node_id": 50,
+		"price": 133,
+		"name": "Poulet",
+		"description": "Le poulet fermier de Loué est élevé en liberté sur des prairies arborées. Il est nourri aux céréales locales. Ce mode d'élevage unique lui confère une chair ferme et savoureuse.",
+		"tags":["950 g", "1 unités"]
+	},{
+		"node_id": 51,
+		"price": 99,
+		"name": "Lessive le chat",
+		"description": "Le Chat Discs Sensitive Aloe Vera et Marseille*, les premières capsules 4 en 1 au parfum hypoallergénique**, sans colorant et sans conservateurs qui respectent le microbiome de la peau. Le tout vous assurant une efficacité complète en toute simplicité et un respect des peaux les plus sensibles !"
+	}]
+}
