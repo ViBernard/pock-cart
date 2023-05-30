@@ -100,10 +100,12 @@ struct ProductCardPriceView: View {
                 Text(pricePromo ?? priceLabel)
                     .bold()
                     .font(Font(CTFont(.label, size: 12)))
+                    .foregroundColor(pricePromo != nil ? .red : .black)
                 if(pricePromo != nil) {
                     Text(priceLabel)
                         .font(Font(CTFont(.label, size: 11)))
-                        .foregroundColor(Color("grey900"))
+                        .foregroundColor(pricePromo != nil  ? .red : Color("grey900"))
+                        .strikethrough()
                 }
             })
             Spacer()
