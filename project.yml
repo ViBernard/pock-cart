@@ -1,4 +1,6 @@
 name: PockCart
+include:
+  - dependencies.yml
 options:
   bundleIdPrefix: SQLI.pock-cart-courseu
 targets:
@@ -27,8 +29,6 @@ targets:
       CURRENT_PROJECT_VERSION: 1
       DEVELOPMENT_TEAM: KX79BU5A78
       GENERATE_INFOPLIST_FILE: YES
-    depencencies:
-      target: [PockCartData]
   PockCartData:
     type: framework
     platform: iOS

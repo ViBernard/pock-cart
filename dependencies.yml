@@ -1,0 +1,5 @@
+targets:
+   PockCart:
+    dependencies:
+       - target: PockCartData
+         embed: true
