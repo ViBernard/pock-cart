@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProductCardPromotion: ViewModifier {
+
     func body(content: Content) -> some View {
         content
             .padding(.all, 5)

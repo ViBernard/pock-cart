@@ -18,7 +18,6 @@ struct ProductsView: View {
             LazyVStack {
                 ForEach((viewModel.products), id: \.self) { item in
                     ProductCardBlocView(product: item)
-                        .environmentObject(viewModel)
                 }
             }
         }
